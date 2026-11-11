@@ -57,6 +57,18 @@ NN+ spread is a sample-based estimate and is not a calibrated confidence interva
 
 Check each configuration before running. Confirm the input paths, selected tag, time range, timezone, receiver geometry, and output folder. A TagID selects a row in the configured tag catalogue; it is not the tag code or receiver ID.
 
+## Run in Jupyter or Google Colab
+
+The notebooks expose the main workflow parameters and save outputs in run folders. Open one directly in Colab:
+
+| Workflow | Colab |
+| --- | --- |
+| Sequim Quickstart | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cwq2016/AquaPINN_tmp/blob/main/Examples/Colab/01_Sequim_Quickstart.ipynb) |
+| Synthetic Benchmark | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cwq2016/AquaPINN_tmp/blob/main/Examples/Colab/02_Synthetic_Benchmark.ipynb) |
+| FishHeart Full Pipeline | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cwq2016/AquaPINN_tmp/blob/main/Examples/Colab/03_FishHeart_Full_Pipeline.ipynb) |
+
+See [the notebook guide](Examples/Colab/README.md) for input paths and output storage details. The repository must be public and the notebooks pushed to the `main` branch for these badges to open successfully.
+
 ## Research environment
 
 Python 3.11 or later is recommended. The research pipeline uses PyTorch, NumPy, SciPy, pandas, Matplotlib, utm, NetworkX, scikit-learn, tqdm, and six. NumPy versions below 2.5 are recommended for the existing coordinate-conversion code.
