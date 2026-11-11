@@ -1,0 +1,9 @@
+__pycache__/
+.venv/
+.r-env/
+.tools/
+Examples/Synthetic/data/
+Examples/fishHeart_2024_all/
+results/
+*.out
+*.lnk
