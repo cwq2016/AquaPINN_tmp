@@ -59,7 +59,7 @@ Check each configuration before running. Confirm the input paths, selected tag, 
 
 ## Run in Jupyter or Google Colab
 
-The Sequim notebook loads the existing `params.toml` directly; the other notebooks provide editable setup blocks. Colab copies results to Google Drive, and local Jupyter follows the configured output folder. Open a workflow directly in Colab:
+The Sequim and FishHeart notebooks load their existing `params.toml` files directly; Synthetic provides an editable setup block. Colab copies results to Google Drive, and local Jupyter follows the configured output folder. Open a workflow directly in Colab:
 
 | Workflow | Colab |
 | --- | --- |
