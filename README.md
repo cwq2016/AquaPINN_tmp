@@ -59,7 +59,7 @@ Check each configuration before running. Confirm the input paths, selected tag, 
 
 ## Run in Jupyter or Google Colab
 
-The notebooks expose the main workflow parameters and save outputs in run folders. Open one directly in Colab:
+The Sequim notebook loads the existing `params.toml` directly; the other notebooks provide editable setup blocks. Colab copies results to Google Drive, and local Jupyter follows the configured output folder. Open a workflow directly in Colab:
 
 | Workflow | Colab |
 | --- | --- |
