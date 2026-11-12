@@ -57,9 +57,11 @@ NN+ spread is a sample-based estimate and is not a calibrated confidence interva
 
 Check each configuration before running. Confirm the input paths, selected tag, time range, timezone, receiver geometry, and output folder. A TagID selects a row in the configured tag catalogue; it is not the tag code or receiver ID.
 
-## Run in Jupyter or Google Colab
+## Colab notebooks: an alternative to the desktop app
 
-The Sequim and FishHeart notebooks load their existing `params.toml` files directly; Synthetic provides an editable setup block. Colab copies results to Google Drive, and local Jupyter follows the configured output folder. Open a workflow directly in Colab:
+Use these browser-based notebooks to learn and try the example workflows without installing AquaPINN or Python on your computer. They are intended mainly for tutorials, teaching, and exploring the examples; the Windows installer remains available for local desktop use.
+
+To start, you need internet access and a Google account with Google Drive. A free account is enough to open the notebooks and save results to Drive. Colab installs the notebook dependencies in its hosted runtime, so no local software installation is required.
 
 | Workflow | Colab |
 | --- | --- |
@@ -67,7 +69,7 @@ The Sequim and FishHeart notebooks load their existing `params.toml` files direc
 | Synthetic Benchmark | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cwq2016/AquaPINN_tmp/blob/main/Examples/Colab/02_Synthetic_Benchmark.ipynb) |
 | FishHeart Full Pipeline | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cwq2016/AquaPINN_tmp/blob/main/Examples/Colab/03_FishHeart_Full_Pipeline.ipynb) |
 
-See [the notebook guide](Examples/Colab/README.md) for input paths and output storage details. The repository must be public and the notebooks pushed to the `main` branch for these badges to open successfully.
+Sequim and FishHeart load settings from their existing `params.toml` files; Synthetic has an editable setup block. Colab runtime limits and availability are controlled by Google. See the [Colab notebook guide](Examples/Colab/README.md) for workflow details.
 
 ## Research environment
 
