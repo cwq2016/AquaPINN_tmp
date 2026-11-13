@@ -66,8 +66,8 @@ To start, you need internet access and a Google account with Google Drive. A fre
 | Workflow | Colab |
 | --- | --- |
 | Sequim Quickstart | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cwq2016/AquaPINN_tmp/blob/main/Examples/Colab/01_Sequim_Quickstart.ipynb) |
-| Synthetic Benchmark | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cwq2016/AquaPINN_tmp/blob/main/Examples/Colab/02_Synthetic_Benchmark.ipynb) |
-| FishHeart Full Pipeline | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cwq2016/AquaPINN_tmp/blob/main/Examples/Colab/03_FishHeart_Full_Pipeline.ipynb) |
+| FishHeart Full Pipeline | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cwq2016/AquaPINN_tmp/blob/main/Examples/Colab/02_FishHeart_Full_Pipeline.ipynb) |
+| Synthetic Benchmark | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cwq2016/AquaPINN_tmp/blob/main/Examples/Colab/03_Synthetic_Benchmark.ipynb) |
 
 Sequim and FishHeart load settings from their existing `params.toml` files; Synthetic has an editable setup block. Colab runtime limits and availability are controlled by Google. See the [Colab notebook guide](Examples/Colab/README.md) for workflow details.
 
