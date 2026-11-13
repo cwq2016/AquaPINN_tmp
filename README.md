@@ -1,16 +1,28 @@
 # AquaPINN Tracker 3D
 
-AquaPINN estimates aquatic acoustic-tag positions and trajectories from detections recorded by hydrophones. The project includes a Python research pipeline and a Windows Auto desktop installer.
+AquaPINN Tracker 3D reconstructs three-dimensional trajectories of acoustically tagged animals from detections collected by hydrophone arrays. The tracker combines receiver locations, tag metadata, and time-of-arrival measurements to estimate a tag's position over time.
 
-The pipeline can decode receiver recordings, synchronize receiver clocks using beacon tags, estimate trajectories with two solvers, and compare saved tracks with GPS references.
+For raw receiver recordings, the workflow decodes tag and beacon detections, then uses beacon detections to estimate receiver-clock offsets when synchronization is needed. Deployments with already time-corrected detections, such as the bundled Sequim example, can proceed directly to tracking. The published neural-network (NN) solver represents the trajectory as a continuous function of ping transmission time and fits observed times of arrival (TOAs) using the acoustic travel-time relationship between the tag and each receiver. The project also includes approximate maximum likelihood (AML), a point-by-point comparison solver. NN+ extends NN with ensemble-based uncertainty quantification. Post-processing tools plot saved tracks and compare them with GPS reference data.
+
+The method terminology follows Chen et al., [“A novel uncertainty-aware 3D tracking solver based on physics-informed neural networks”](https://doi.org/10.1139/cjfas-2025-0392) (2026).
+
+This repository includes the Python research pipeline, example workflows for FishHeart, Sequim, and synthetic data, a Windows Auto desktop installer, and browser-based Jupyter notebooks for tutorials and exploring the examples.
 
 ## What the terms mean
 
-- A hydrophone is an acoustic receiver.
-- A beacon is a tag placed near a receiver and used to estimate clock offsets.
-- TOA means time of arrival. TDOA is the difference between arrival times at two receivers.
-- PRI is the expected interval between transmissions from a tag.
-- TagID is the zero-based row number in the tag catalogue. The tag code identifies the physical transmitter.
+| Term | Meaning in this project |
+| --- | --- |
+| Acoustic tag / transmitter | A device attached to an animal that emits identifiable acoustic pings. The tag code identifies the transmitter. |
+| Ping | One acoustic signal emitted by a tag. The pulse repetition interval (PRI) is the time between consecutive pings. |
+| Receiver / hydrophone | A sensor at a known location that detects and records a ping. Some parameter files call the receiver geometry `phoneFile`. |
+| Detection | A receiver's record that it heard a particular tag ping, including its measured arrival time. A ping can be detected by several receivers or missed by some. |
+| TOA | Time of arrival: the time a ping is recorded at a receiver. TOA measurements are affected by timing noise, multipath, and clock offsets. |
+| TDOA | Time difference of arrival: the difference between TOA measurements at two receivers. |
+| Beacon | A reference transmitter used to estimate clock offsets between receivers when detection times are not already synchronized. |
+| AML | Approximate maximum likelihood. A point-by-point solver that estimates positions from individual transmissions. |
+| NN (PINN) | The paper's physics-informed neural-network trajectory solver, called NN in the paper and configuration. It represents the trajectory as a continuous function of ping transmission time and fits TOA measurements using receiver distance and sound speed. |
+| NN+ | An ensemble version of NN. It combines repeated NN fits and uses the ensemble mean and spread (such as standard deviation) to estimate trajectory uncertainty. |
+| TagID | The zero-based row number in the tag catalogue. It selects a row; it is not the tag code or a receiver ID. |
 
 ## Windows desktop installer
 
@@ -41,11 +53,11 @@ More detail is in [Research workflows](docs/research-workflows.md).
 
 | Method | Description | Configuration |
 | --- | --- | --- |
-| AML | Analytical multilateration; fast, pointwise position estimates | trackMethod = ["AML"] |
-| NN | Neural trajectory model | trackMethod = ["NN"], nSamples = [1] |
-| NN+ | Repeated NN fits; summarizes between-fit spread | trackMethod = ["NN"], nSamples greater than 1 |
+| AML | Approximate maximum likelihood; point-by-point position estimates | trackMethod = ["AML"] |
+| NN | Physics-informed neural-network trajectory solver | trackMethod = ["NN"], nSamples = [1] |
+| NN+ | NN ensemble; reports the ensemble mean and spread for uncertainty-aware interpretation | trackMethod = ["NN"], nSamples greater than 1 |
 
-NN+ spread is a sample-based estimate and is not a calibrated confidence interval. The valid trackMethod value remains NN; NNplus is the saved output label for repeated fits.
+NN+ uses ensemble spread as a model-based uncertainty estimate and can support filtering less reliable positions. Check uncertainty calibration for the deployment before interpreting the spread as a formal confidence interval. In the configuration file, the method remains `trackMethod = ["NN"]`; set `nSamples` greater than 1 to run NN+, which is saved with the `NNplus` output label.
 
 ## Included examples
 
